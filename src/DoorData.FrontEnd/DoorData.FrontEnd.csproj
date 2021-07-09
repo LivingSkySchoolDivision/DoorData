@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <ItemGroup>
+    <ProjectReference Include="..\DoorData.Domain\DoorData.Domain.csproj" />
+    <ProjectReference Include="..\DoorData.Data\DoorData.Data.csproj" />
+    <ProjectReference Include="..\DoorData.Utilities\DoorData.Utilities.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
