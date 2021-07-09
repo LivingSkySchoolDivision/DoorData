@@ -10,6 +10,17 @@ namespace DoorData.Data
 {
     public class MilleniumHistoryRepository 
     {        
+
+        /*
+
+            ActionIDs
+             10 - unlock
+             87 - Auto unlock
+             89 - Unlock end
+             11 - invalid user
+             16 - net connection lost
+
+        */
         private readonly string _connString = string.Empty;
         public MilleniumHistoryRepository(string ConnectionString)
         {

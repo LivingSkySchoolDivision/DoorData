@@ -8,12 +8,13 @@
 }
 
 <div>
-    <table border=0 cellpadding=0 cellspacing=0>
+    <table border=0 cellpadding=0 cellspacing=0 style="text-size: 8pt;">
         <tr>
             <th>Date</th>
             <th>Time</th>
             <th>Site</th>
             <th>Device</th>
+            <th>Action</th>
             <th>Output A</th>
             <th>Output B</th>
             <th>Output C</th>
@@ -26,6 +27,7 @@
                 <td>@entry.TransactionTimestamp.ToLongTimeString()</td>
                 <td>@entry.SiteName</td>
                 <td>@entry.DeviceName</td>
+                <td>@entry.ActionDescription</td>
                 <td>@entry.OutputColumnA</td>
                 <td>@entry.OutputColumnB</td>
                 <td>@entry.OutputColumnC</td>
