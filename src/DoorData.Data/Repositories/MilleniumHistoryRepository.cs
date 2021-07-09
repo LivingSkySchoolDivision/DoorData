@@ -29,7 +29,7 @@ namespace DoorData.Data
                 ActionDescription = dataReader["ActionDesc"].ToString(),
                 OutputColumnA = dataReader["OutputColumnA"].ToString(),
                 OutputColumnB = dataReader["OutputColumnB"].ToString(),
-                OutputcolumnC = dataReader["OutputColumnC"].ToString(),
+                OutputColumnC = dataReader["OutputColumnC"].ToString(),
                 DeviceName = dataReader["DeviceName"].ToString(),
                 UserCodeHi = dataReader["UserCodeHi"].ToString().ToInt(),
                 UserCodeLo = dataReader["UserCodeLo"].ToString().ToInt(),
@@ -91,6 +91,38 @@ namespace DoorData.Data
                     sqlCommand.Connection = connection;
                     sqlCommand.CommandType = CommandType.Text;
                     sqlCommand.CommandText = "SELECT TOP " + Max + " * FROM HistoryTable ORDER BY HistoryTransID DESC;";
+                    sqlCommand.Connection.Open();
+                    SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            MilleniumHistoryEntry s = dataReaderToObject(dataReader);
+                            if (s != null)
+                            {
+                                returnMe.Add(s);
+                            }
+                        }
+                    }
+                    sqlCommand.Connection.Close();
+                }
+            }
+
+            return returnMe;
+        }
+
+        public List<MilleniumHistoryEntry> Get(DateTime SinceDate)
+        {
+            List<MilleniumHistoryEntry> returnMe = new List<MilleniumHistoryEntry>();
+
+            using (SqlConnection connection = new SqlConnection(_connString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand())
+                {
+                    sqlCommand.Connection = connection;
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlCommand.CommandText = "SELECT * FROM HistoryTable WHERE TransTimestamp>=@SINCEDATE ORDER BY HistoryTransID DESC;";
+                    sqlCommand.Parameters.AddWithValue("@SINCEDATE", SinceDate);
                     sqlCommand.Connection.Open();
                     SqlDataReader dataReader = sqlCommand.ExecuteReader();
                     if (dataReader.HasRows)

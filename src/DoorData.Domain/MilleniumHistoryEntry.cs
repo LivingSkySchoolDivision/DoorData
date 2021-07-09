@@ -13,7 +13,7 @@ namespace DoorData.Domain
         public string ActionDescription { get; set; }
         public string OutputColumnA { get; set; }
         public string OutputColumnB { get; set; }
-        public string OutputcolumnC { get; set; }
+        public string OutputColumnC { get; set; }
         public string DeviceName { get; set; }
         public int UserCodeHi { get; set; }
         public int UserCodeLo { get; set; } 

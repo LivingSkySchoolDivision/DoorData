@@ -1,0 +1,16 @@
+@page "/last1000"
+@using DoorData.FrontEnd.Components
+@using DoorData.FrontEnd.Services
+
+@code {
+    
+    [Inject]
+    public MilleniumHistoryService Repository { get; set; }
+
+
+}
+
+<h1>Last 1000 records</h1>
+
+<HistoryEntryTable Entries="@(Repository.Get(1000))"/>
+
